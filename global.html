@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New Tab</title>
+        <script type="text/javascript" charset="utf-8">
+        // http://stackoverflow.com/questions/10148711/safari-extension-event-for-a-completely-new-tab
+
+        var debugModeEnabled = false,
+            lastClickedLinkUrl = null,
+            lastLinkClickTime = null,
+            lastClickReferrer = null;
+
+        function takeOverTab(target) {
+            if (debugModeEnabled) console.debug('Taking over tab...');
+            target.url = safari.extension.baseURI + 'earthviewer/google-places-backdrops.html';
+       }
+
+        function handleOpen(e) {
+            if (debugModeEnabled) console.debug(e.url);
+            if ((e.target instanceof SafariBrowserTab) && lastClickedLinkUrl !== e.url) {
+                if (lastClickReferrer !== 'CartoTab') {
+                    takeOverTab(e.target);
+                }
+            }
+
+            // Reset vars
+            lastClickedLinkUrl = null;
+            lastLinkClickTime = null;
+            lastClickReferrer = null;
+        }
+
+        function handleMessage(e) {
+            if (debugModeEnabled) console.debug(e);
+            if (e.name === 'clickInfo') {
+                lastClickedLinkUrl = e.message[0];
+                lastLinkClickTime = e.message[1];
+                lastClickReferrer = e.message[2];
+            }
+        }
+
+        // Register listener:
+        safari.application.addEventListener('open', handleOpen, true);
+        safari.application.addEventListener('message', handleMessage, false);
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
+

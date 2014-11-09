@@ -1,0 +1,23 @@
+{
+   "background": {
+      "persistent": false,
+      "scripts": [ "scripts/namespace.js", "data/imageIds.json", "scripts/onInstall.js" ]
+   },
+   "chrome_url_overrides": {
+      "newtab": "google-places-backdrops.html"
+   },
+   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+   "description": "Earth View displays a beautiful and unique Satellite image from Google Maps every time you open a new tab.",
+   "icons": {
+      "128": "images/icon-128.png",
+      "16": "images/icon-16.png",
+      "48": "images/icon-48.png"
+   },
+   "incognito": "split",
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhCAw22RXJXMbqOiZJ3Gzp+1lviyR5urieKHt0Op0h+vx0C92S7Bc/7i8lm8HmFkZdwNQiucZSAVYgiQXoNU5ZaJhUavraAtouegZm1ks4yKU0PcmAPN3Q6I6nKIsPRsrCLVRo5ky+5Iij5woZe40mzIJGrmqi8NDn/bi7GwZcNCol17R3Me0aOlb7E96I4AzSw2fzMwYOvi/Lzr2efryLCz6RwicgDzzVWGFfSvTD122T7L+rhpOL6UMqT0O+zAh4eIsSWUgiZbV4j8OsmPH8PEQSb0xoLmrZrzYjMXu+Enw1I9UOSa3L3coI3Z4gaM2GGpg5i5K8FLsVF64statcQIDAQAB",
+   "manifest_version": 2,
+   "name": "Earth View from Google Maps",
+   "permissions": [ "https://www.gstatic.com/prettyearth/*" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.6.6"
+}
